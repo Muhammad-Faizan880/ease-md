@@ -89,6 +89,7 @@ function StepperForm() {
       selectedDose: option, // ✅ Add selected dose in formData
     }));
   };
+
   // BMI Calculation
   useEffect(() => {
     const feet = parseFloat(formData.heightFeet);
@@ -261,7 +262,7 @@ function StepperForm() {
       image: "/assets/images/3.png",
       buttonLabel: "SELECTED",
       cancel: "Cancel or Change plan anytime",
-      redirectUrl: "https://checkout.ease-md.com/i/42",
+      redirectUrl: "https://checkout.ease-md.com/i/46",
     },
     {
       id: 3,
@@ -309,7 +310,7 @@ function StepperForm() {
       image: "/assets/images/3.png",
       buttonLabel: "SELECTED",
       cancel: "Cancel or Change plan anytime",
-      redirectUrl: "https://checkout.ease-md.com/i/42",
+      redirectUrl: "https://checkout.ease-md.com/i/46",
     },
     {
       id: 3,
@@ -1825,20 +1826,18 @@ function StepperForm() {
             <div className="col-12 col-sm-6 col-lg-6 col-xxl-4 custom-1700 mb-4 ">
               <div className=" testimonials-cards-style ">
                 <img
-                  src="/assets/images/star.png"
+                  src="assets/images/testi-star.svg"
                   alt=""
                   className="img-padd-b"
                 />
-                <p className="glad-class">Glad I Found Ease MD</p>
+                <p className="glad-class">Finally, Something That Worked</p>
                 <p className="glad-class-p">
-                  I am so glad I found Ease MD. At a time when I was struggling
-                  to get in a zone to lose weight, this was the easy answer for
-                  me. It was an easy program and I felt supported...
+                Ease MD was exactly what I needed. I’d tried so many diets, plans, and apps before, but nothing ever stuck. This program made weight loss feel simple and achievable.
                 </p>
 
                 <div className="clas-flex-img-client gap-3">
                   <img
-                    src="/assets/images/client.png"
+                    src="/assets/images/pic.svg"
                     alt="Client"
                     className="rounded-circle"
                     style={{ width: "48px", height: "48px" }}
@@ -1882,7 +1881,7 @@ function StepperForm() {
                   </div>
                 </div>
                 <div className="padding-card-2">
-                  <p className="jeni-style">Jennifer</p>
+                  <p className="jeni-style">Tanya</p>
                   <div className=" gap-1 class-margin-2">
                     <img
                       src="/assets/images/SVG.png"
@@ -1895,7 +1894,7 @@ function StepperForm() {
                   <div className="d-flex justify-content-between align-items-center w-set class-mb-sett">
                     <p className="date-class">
                       Date of experience:{" "}
-                      <span className="date">February 07, 2025</span>
+                      <span className="date">February 04, 2025</span>
                     </p>
 
                     <div className="bg-gray-0 ">
@@ -1910,27 +1909,25 @@ function StepperForm() {
             <div className="col-12 col-sm-6 col-lg-6 col-xxl-4 custom-1700 mb-4 d-none d-lg-block">
               <div className=" testimonials-cards-style ">
                 <img
-                  src="/assets/images/star.png"
+                  src="assets/images/testi-star.svg"
                   alt=""
                   className="img-padd-b"
                 />
-                <p className="glad-class">Glad I Found Ease MD</p>
+                <p className="glad-class">Support That Makes a Difference</p>
                 <p className="glad-class-p">
-                  I am so glad I found Ease MD. At a time when I was struggling
-                  to get in a zone to lose weight, this was the easy answer for
-                  me. It was an easy program and I felt supported...
+                This program gave me the structure and support I didn’t even realize I needed. It wasn’t overwhelming — it was manageable, step by step
                 </p>
 
                 <div className="clas-flex-img-client gap-3">
                   <img
-                    src="/assets/images/client.png"
+                    src="/assets/images/pic1.svg"
                     alt="Client"
                     className="rounded-circle"
                     style={{ width: "48px", height: "48px" }}
                   />
 
                   <div className="lindsay-margin ">
-                    <p className="class-lindsay">Lindsay</p>
+                    <p className="class-lindsay">Sofia</p>
                     <div className="d-flex align-items-center gap-1 class-margin">
                       <img
                         src="/assets/images/SVG.png"
@@ -1967,7 +1964,7 @@ function StepperForm() {
                   </div>
                 </div>
                 <div className="padding-card-2">
-                  <p className="jeni-style">Jennifer</p>
+                  <p className="jeni-style">Daisy</p>
                   <div className=" gap-1 class-margin-2">
                     <img
                       src="/assets/images/SVG.png"
@@ -1980,7 +1977,7 @@ function StepperForm() {
                   <div className="d-flex justify-content-between align-items-center w-set">
                     <p className="date-class">
                       Date of experience:{" "}
-                      <span className="date">February 07, 2025</span>
+                      <span className="date">February 04, 2025</span>
                     </p>
 
                     <div className="bg-gray-0">
@@ -2011,7 +2008,7 @@ function StepperForm() {
                   </div>
                 </div>
                 <div className="padding-card-2">
-                  <p className="jeni-style">Jennifer</p>
+                  <p className="jeni-style">Mia</p>
                   <div className=" gap-1 class-margin-2">
                     <img
                       src="/assets/images/SVG.png"
@@ -2024,7 +2021,7 @@ function StepperForm() {
                   <div className="d-flex justify-content-between align-items-center w-set">
                     <p className="date-class">
                       Date of experience:{" "}
-                      <span className="date">February 07, 2025</span>
+                      <span className="date">February 04, 2025</span>
                     </p>
 
                     <div className="bg-gray-0">
@@ -2039,27 +2036,25 @@ function StepperForm() {
             <div className="col-12 col-sm-6 col-lg-6 col-xxl-4 custom-1700 mb-4 d-none d-lg-block">
               <div className=" testimonials-cards-style ">
                 <img
-                  src="/assets/images/star.png"
+                  src="assets/images/testi-star.svg"
                   alt=""
                   className="img-padd-b"
                 />
-                <p className="glad-class">Glad I Found Ease MD</p>
+                <p className="glad-class">From Stuck to Strong</p>
                 <p className="glad-class-p">
-                  I am so glad I found Ease MD. At a time when I was struggling
-                  to get in a zone to lose weight, this was the easy answer for
-                  me. It was an easy program and I felt supported...
+                I was feeling stuck and frustrated. No matter what I did, nothing seemed to help me lose weight or feel better. Then I found Ease MD, and everything changed.
                 </p>
 
                 <div className="clas-flex-img-client gap-3">
                   <img
-                    src="/assets/images/client.png"
+                    src="/assets/images/pic2.svg"
                     alt="Client"
                     className="rounded-circle"
                     style={{ width: "48px", height: "48px" }}
                   />
 
                   <div className="lindsay-margin ">
-                    <p className="class-lindsay">Lindsay</p>
+                    <p className="class-lindsay">Sarah</p>
                     <div className="d-flex align-items-center gap-1 class-margin">
                       <img
                         src="/assets/images/SVG.png"
@@ -2096,7 +2091,7 @@ function StepperForm() {
                   </div>
                 </div>
                 <div className="padding-card-2">
-                  <p className="jeni-style">Jennifer</p>
+                  <p className="jeni-style">Kim</p>
                   <div className=" gap-1 class-margin-2">
                     <img
                       src="/assets/images/SVG.png"
@@ -2109,7 +2104,7 @@ function StepperForm() {
                   <div className="d-flex justify-content-between align-items-center w-set">
                     <p className="date-class">
                       Date of experience:{" "}
-                      <span className="date">February 07, 2025</span>
+                      <span className="date">February 04, 2025</span>
                     </p>
 
                     <div className="bg-gray-0">
@@ -2124,27 +2119,25 @@ function StepperForm() {
             <div className="col-12 col-sm-6 col-lg-6 col-xxl-4 custom-1700 mb-4 d-none d-lg-block">
               <div className=" testimonials-cards-style ">
                 <img
-                  src="/assets/images/star.png"
+                  src="assets/images/testi-star.svg"
                   alt=""
                   className="img-padd-b"
                 />
-                <p className="glad-class">Glad I Found Ease MD</p>
+                <p className="glad-class">Consistency at Last</p>
                 <p className="glad-class-p">
-                  I am so glad I found Ease MD. At a time when I was struggling
-                  to get in a zone to lose weight, this was the easy answer for
-                  me. It was an easy program and I felt supported...
+                I’ve always struggled with sticking to a plan. But Ease MD made it easy to stay consistent. The approach was gentle but effective, and I actually looked forward to the updates and check-ins.
                 </p>
 
                 <div className="clas-flex-img-client gap-3">
                   <img
-                    src="/assets/images/client.png"
+                    src="/assets/images/pic3.svg"
                     alt="Client"
                     className="rounded-circle"
                     style={{ width: "48px", height: "48px" }}
                   />
 
                   <div className="lindsay-margin ">
-                    <p className="class-lindsay">Lindsay</p>
+                    <p className="class-lindsay">Andrea</p>
                     <div className="d-flex align-items-center gap-1 class-margin">
                       <img
                         src="/assets/images/SVG.png"

@@ -671,8 +671,8 @@ line-height: 8px;
   font-size: 16px;
   line-height: 24px;
   color: #2f766a;
-  width: 80%;
-  padding-bottom: 24px;
+  width: 90%;
+  height: 145px;
 }
 
 .clas-flex-img-client {
@@ -1673,7 +1673,7 @@ align-items: flex-start !important;
     vertical-align: middle;
     color: black;
     border-radius: 50px;
-    width: 80%;
+    width: 100%;
     padding: 4px;
     margin-top: -8px;
     margin: auto;
@@ -1966,7 +1966,7 @@ align-items: flex-start !important;
     vertical-align: middle;
     color: black;
     border-radius: 50px;
-    width: 80%;
+    width: 100%;
     padding: 4px;
     margin-top: -8px;
     margin: auto;
@@ -2096,7 +2096,7 @@ align-items: flex-start !important;
     vertical-align: middle;
     color: black;
     border-radius: 50px;
-    width: 80%;
+    width: 100%;
     padding: 4px;
     margin-top: -8px;
     margin: auto;

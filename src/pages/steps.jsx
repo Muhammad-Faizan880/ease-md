@@ -90,6 +90,31 @@ function StepperForm() {
     }));
   };
 
+
+  function sendHeightToParent() {
+    const height = document.body.scrollHeight;
+    // Send message to parent window
+    if (window.parent) {
+      window.parent.postMessage({
+        type: 'setHeight',
+        height: height
+      }, '*'); // Replace '*' with your parent domain for better security
+    }
+  }
+  
+  // Call this whenever your content changes height
+  window.addEventListener('load', sendHeightToParent);
+  window.addEventListener('resize', sendHeightToParent);
+  
+  // Also call it after any component updates that might change height
+  // For example, in a React component:
+  useEffect(() => {
+    sendHeightToParent();
+  }, [yourDependencies]);
+
+
+
+
   // BMI Calculation
   useEffect(() => {
     const feet = parseFloat(formData.heightFeet);

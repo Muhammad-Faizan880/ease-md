@@ -204,7 +204,7 @@ body {
   height: 70px;
   background-color: #f5d552;
   color: black;
-  font-family: HelveticaNeueLight;
+  font-family: HelveticaNeue-Bold;
   font-weight: 400;
   font-size: 20px;
   line-height: 30px;
@@ -1173,8 +1173,9 @@ color: #68696B;
 }
 
 .img-tick-set {
-  width: 12px !important;
-  height: 12px !important;
+  width: 14px !important;
+  height: 14px !important;
+  margin-top: -2px;
 }
 
 .class-title-new {
@@ -1610,7 +1611,7 @@ align-items: flex-start !important;
     line-height: 12px;
     text-align: start !important;
     color: #000000;
-    margin-bottom: 9px;
+    margin-bottom: 14px;
 
   }
   .class-details-new1-mob {

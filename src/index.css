@@ -691,7 +691,7 @@ line-height: 8px;
   margin-top: -14px;
 }
 .class-lindsay {
-  font-family: HelveticaNeueLight;
+  font-family: HelveticaNeue-Bold;
   font-weight: 700;
   font-size: 16px;
   line-height: 16px;
@@ -1173,8 +1173,8 @@ color: #68696B;
 }
 
 .img-tick-set {
-  width: 14px !important;
-  height: 14px !important;
+  width: 16px !important;
+  height: 16px !important;
   margin-top: -2px;
 }
 
@@ -1219,7 +1219,7 @@ color: #68696B;
   line-height: 12px;
   text-align: start !important;
   color: #2F827A;
-  margin-bottom: 10px;
+  margin-bottom: 11px;
 }
 .class-details-new {
   font-family: HelveticaNeue-Bold;

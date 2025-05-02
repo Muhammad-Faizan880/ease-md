@@ -262,7 +262,7 @@ function StepperForm() {
       image: "/assets/images/3.png",
       buttonLabel: "SELECTED",
       cancel: "Cancel or Change plan anytime",
-      redirectUrl: "https://checkout.ease-md.com/i/42",
+      redirectUrl: "https://checkout.ease-md.com/i/46",
     },
     {
       id: 3,
@@ -310,7 +310,7 @@ function StepperForm() {
       image: "/assets/images/3.png",
       buttonLabel: "SELECTED",
       cancel: "Cancel or Change plan anytime",
-      redirectUrl: "https://checkout.ease-md.com/i/42",
+      redirectUrl: "https://checkout.ease-md.com/i/46",
     },
     {
       id: 3,

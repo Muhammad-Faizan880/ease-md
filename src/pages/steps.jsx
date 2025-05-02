@@ -90,12 +90,6 @@ function StepperForm() {
     }));
   };
 
-
-
-
-
-  
-
   // BMI Calculation
   useEffect(() => {
     const feet = parseFloat(formData.heightFeet);
@@ -1652,6 +1646,8 @@ function StepperForm() {
 
   return (
     <>
+
+
       <div className="container ptb-class">
         <div className="row justify-content-center">
           <div className="col-xl-7 col-xxl-6 col-12">

@@ -22,7 +22,7 @@ function StepperForm() {
     sex: null,
     medicationAnswer: null,
     selectedDose: null,
-    selectedProduct: null,
+    selectedProduct: 1,
   });
 
   // Watch for changes in weight
@@ -905,76 +905,6 @@ function StepperForm() {
                       </div>
                     </div>
                   </div>
-                  {/* <div
-                    className={`tab-pane fade ${
-                      activeTab === "profile" ? "show active" : ""
-                    }`}
-                    id="profile"
-                    role="tabpanel"
-                    aria-labelledby="profile-tab"
-                  >
-                    <div className="flex-grow-1 class-padding-22">
-                      <label
-                        htmlFor="height2"
-                        className="form-label fontyy mb-0"
-                      >
-                        Email
-                      </label>
-                      <div className="position-relative">
-                        <input
-                          type="text"
-                          className={`form-control pe-5 input-style ${
-                            errors.email ? "border-danger" : ""
-                          }`}
-                          id="email"
-                          name="email"
-                          placeholder="e.g. John Smith@gmail.com"
-                          onChange={handleChange}
-                        />
-                      </div>
-                    </div>
-                    <div className="flex-grow-1 class-padding-22">
-                      <label
-                        htmlFor="height2"
-                        className="form-label fontyy mb-0"
-                      >
-                        Birth Date
-                      </label>
-                      <div className="position-relative">
-                        <input
-                          type="date"
-                          max={new Date().toISOString().split("T")[0]} // restrict future dates
-                          className={`form-control input-style ${
-                            errors.birthDate ? "border-danger" : ""
-                          }`}
-                          id="birthDate"
-                          name="birthDate"
-                          value={formData.birthDate}
-                          onChange={handleChange}
-                        />
-                      </div>
-                    </div>
-                    <div className="flex-grow-1 ">
-                      <label
-                        htmlFor="height2"
-                        className="form-label fontyy mb-0"
-                      >
-                        Zip Code
-                      </label>
-                      <div className="position-relative">
-                        <input
-                          type="text"
-                          className={`form-control pe-5 input-style ${
-                            errors.zipCode ? "border-danger" : ""
-                          }`}
-                          id="zipCode"
-                          name="zipCode"
-                          placeholder="####"
-                          onChange={handleChange}
-                        />
-                      </div>
-                    </div>
-                  </div> */}
                 </div>
               </div>
             </div>
@@ -1646,8 +1576,6 @@ function StepperForm() {
 
   return (
     <>
-
-
       <div className="container ptb-class">
         <div className="row justify-content-center">
           <div className="col-xl-7 col-xxl-6 col-12">
@@ -1715,7 +1643,6 @@ function StepperForm() {
                         <button
                           type="button"
                           className="btn btn-setting-class-custom rounded-pill py-3"
-                          disabled={formData.selectedProduct === null}
                           onClick={() => {
                             const selected = products.find(
                               (p) => p.id === formData.selectedProduct
@@ -1832,7 +1759,9 @@ function StepperForm() {
                 />
                 <p className="glad-class">Finally, Something That Worked</p>
                 <p className="glad-class-p">
-                Ease MD was exactly what I needed. I’d tried so many diets, plans, and apps before, but nothing ever stuck. This program made weight loss feel simple and achievable.
+                  Ease MD was exactly what I needed. I’d tried so many diets,
+                  plans, and apps before, but nothing ever stuck. This program
+                  made weight loss feel simple and achievable.
                 </p>
 
                 <div className="clas-flex-img-client gap-3">
@@ -1915,7 +1844,9 @@ function StepperForm() {
                 />
                 <p className="glad-class">Support That Makes a Difference</p>
                 <p className="glad-class-p">
-                This program gave me the structure and support I didn’t even realize I needed. It wasn’t overwhelming — it was manageable, step by step
+                  This program gave me the structure and support I didn’t even
+                  realize I needed. It wasn’t overwhelming — it was manageable,
+                  step by step
                 </p>
 
                 <div className="clas-flex-img-client gap-3">
@@ -2042,7 +1973,9 @@ function StepperForm() {
                 />
                 <p className="glad-class">From Stuck to Strong</p>
                 <p className="glad-class-p">
-                I was feeling stuck and frustrated. No matter what I did, nothing seemed to help me lose weight or feel better. Then I found Ease MD, and everything changed.
+                  I was feeling stuck and frustrated. No matter what I did,
+                  nothing seemed to help me lose weight or feel better. Then I
+                  found Ease MD, and everything changed.
                 </p>
 
                 <div className="clas-flex-img-client gap-3">
@@ -2125,7 +2058,10 @@ function StepperForm() {
                 />
                 <p className="glad-class">Consistency at Last</p>
                 <p className="glad-class-p">
-                I’ve always struggled with sticking to a plan. But Ease MD made it easy to stay consistent. The approach was gentle but effective, and I actually looked forward to the updates and check-ins.
+                  I’ve always struggled with sticking to a plan. But Ease MD
+                  made it easy to stay consistent. The approach was gentle but
+                  effective, and I actually looked forward to the updates and
+                  check-ins.
                 </p>
 
                 <div className="clas-flex-img-client gap-3">

@@ -69,24 +69,23 @@ function StepperForm() {
   const [accordionOpen, setAccordionOpen] = useState(null);
   const [medicationAnswer, setMedicationAnswer] = useState(null);
 
-  const [isOpen, setIsOpen] = useState(false); // To control dropdown visibility
-  const [selectedOption, setSelectedOption] = useState(null); // To store selected option
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("");
   const [loading, setLoading] = useState(false);
   const [bmi, setBmi] = useState(null);
   const [timeLeft, setTimeLeft] = useState(600);
   const [showFirstPara, setShowFirstPara] = useState(false);
   const [showSecondPara, setShowSecondPara] = useState(false);
 
-  const toggleDropdown = () => setIsOpen(!isOpen); // Toggle the dropdown visibility
+  const toggleDropdown = () => setIsOpen(!isOpen);
 
-  const handleSelect = (option) => {
-    setSelectedOption(option);
-    setIsOpen(false); // Close dropdown
+  const handleSelect = (label) => {
+    setSelectedOption(label);
+    setIsOpen(false);
 
-    // Also update formData
     setFormData((prev) => ({
       ...prev,
-      selectedDose: option, // ✅ Add selected dose in formData
+      selectedDose: label,
     }));
   };
 
@@ -143,15 +142,6 @@ function StepperForm() {
       setShowSecondPara(false);
     }
   }, [loading]);
-
-  const options = [
-    "Semaglutide 0.25 mg/wk for $XXX",
-    "Semaglutide 0.5 mg/wk for $XXX",
-    "Semaglutide 1 mg/wk for $XXX",
-    "Semaglutide 1.5 mg/wk for $XXX",
-    "Semaglutide 2 mg/wk for $XXX",
-    "Semaglutide 2.5 mg/wk for $XXX",
-  ];
 
   const handleMedicationChange = (value) => {
     handleChange({
@@ -232,6 +222,57 @@ function StepperForm() {
 
   //product start//
 
+  const doseOptions = [
+    {
+      label: "0.25 mg/wk",
+      links: [
+        "https://checkout.ease-md.com/i/29",
+        "https://checkout.ease-md.com/i/46",
+        "https://checkout.ease-md.com/i/51",
+      ],
+    },
+    {
+      label: "0.5 mg/wk",
+      links: [
+        "https://checkout.ease-md.com/i/30",
+        "https://checkout.ease-md.com/i/47",
+        "https://checkout.ease-md.com/i/52",
+      ],
+    },
+    {
+      label: "1 mg/wk",
+      links: [
+        "https://checkout.ease-md.com/i/31",
+        "https://checkout.ease-md.com/i/42",
+        "https://checkout.ease-md.com/i/53",
+      ],
+    },
+    {
+      label: "1.5 mg/wk",
+      links: [
+        "https://checkout.ease-md.com/i/32",
+        "https://checkout.ease-md.com/i/43",
+        "https://checkout.ease-md.com/i/54",
+      ],
+    },
+    {
+      label: "2 mg/wk",
+      links: [
+        "https://checkout.ease-md.com/i/33",
+        "https://checkout.ease-md.com/i/44",
+        "https://checkout.ease-md.com/i/55",
+      ],
+    },
+    {
+      label: "2.5 mg/wk",
+      links: [
+        "https://checkout.ease-md.com/i/34",
+        "https://checkout.ease-md.com/i/45",
+        "https://checkout.ease-md.com/i/5",
+      ],
+    },
+  ];
+
   const products = [
     {
       id: 1,
@@ -248,6 +289,7 @@ function StepperForm() {
       cancel: "Cancel or Change plan anytime",
       badge: "BEST VALUE",
       redirectUrl: "https://checkout.ease-md.com/i/51",
+      doseOptions: doseOptions,
     },
     {
       id: 2,
@@ -263,6 +305,7 @@ function StepperForm() {
       buttonLabel: "SELECTED",
       cancel: "Cancel or Change plan anytime",
       redirectUrl: "https://checkout.ease-md.com/i/46",
+      doseOptions: doseOptions,
     },
     {
       id: 3,
@@ -278,8 +321,10 @@ function StepperForm() {
       buttonLabel: "SELECT PLAN",
       cancel: "Cancel or Change plan anytime",
       redirectUrl: "https://checkout.ease-md.com/i/29",
+      doseOptions: doseOptions,
     },
   ];
+
   const productsMob = [
     {
       id: 1,
@@ -340,12 +385,24 @@ function StepperForm() {
 
   const handleProductSelect = (productId) => {
     console.log("Selected Product ID:", productId);
+
+    const selectedProduct = products.find(
+      (product) => product.id === productId
+    );
+
+    if (selectedProduct && selectedProduct.doseOptions) {
+      console.log("Dose Options:", selectedProduct.doseOptions);
+    } else {
+      console.log("No dose options available for this product.");
+    }
+
     setFormData((prev) => ({
       ...prev,
       selectedProduct: productId,
     }));
     setAccordionOpen(null);
   };
+
   //product end
   const toggleAccordion = (section) => {
     setAccordionOpen((prev) => (prev === section ? null : section));
@@ -1126,10 +1183,13 @@ function StepperForm() {
                               boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
                             }}
                           >
-                            {options.map((option, index) => (
+                            {doseOptions.map((option, index) => (
                               <div
                                 key={index}
-                                onClick={() => handleSelect(option)}
+                                onClick={() => {
+                                  handleSelect(option.label);
+                                  console.log("Selected Links:", option.links);
+                                }}
                                 className="option-clr"
                                 style={{
                                   padding: "10px",
@@ -1137,7 +1197,7 @@ function StepperForm() {
                                   borderBottom: "1px solid #ddd",
                                 }}
                               >
-                                {option}
+                                {option.label}
                               </div>
                             ))}
                           </div>

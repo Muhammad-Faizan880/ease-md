@@ -288,7 +288,7 @@ function StepperForm() {
 
   const doseOptions = [
     {
-      label: "0.25 mg/wk",
+      label: "Semaglutide 0.25 mg/wk",
       links: [
         "https://checkout.ease-md.com/i/29",
         "https://checkout.ease-md.com/i/46",
@@ -296,7 +296,7 @@ function StepperForm() {
       ],
     },
     {
-      label: "0.5 mg/wk",
+      label: "Semaglutide 0.5 mg/wk",
       links: [
         "https://checkout.ease-md.com/i/30",
         "https://checkout.ease-md.com/i/47",
@@ -304,7 +304,7 @@ function StepperForm() {
       ],
     },
     {
-      label: "1 mg/wk",
+      label: "Semaglutide 1 mg/wk",
       links: [
         "https://checkout.ease-md.com/i/31",
         "https://checkout.ease-md.com/i/42",
@@ -312,7 +312,7 @@ function StepperForm() {
       ],
     },
     {
-      label: "1.5 mg/wk",
+      label: "Semaglutide 1.5 mg/wk",
       links: [
         "https://checkout.ease-md.com/i/32",
         "https://checkout.ease-md.com/i/43",
@@ -320,7 +320,7 @@ function StepperForm() {
       ],
     },
     {
-      label: "2 mg/wk",
+      label: "Semaglutide 2 mg/wk",
       links: [
         "https://checkout.ease-md.com/i/33",
         "https://checkout.ease-md.com/i/44",
@@ -328,7 +328,7 @@ function StepperForm() {
       ],
     },
     {
-      label: "2.5 mg/wk",
+      label: "Semaglutide 2.5 mg/wk",
       links: [
         "https://checkout.ease-md.com/i/34",
         "https://checkout.ease-md.com/i/45",
@@ -1117,7 +1117,7 @@ function StepperForm() {
                   </div>
 
                   <h5 className="class-compound">
-                    Compounded Semaglutide 0.25 mg/wk
+                    Compounded {selectedOption || "Semaglutide 0.5 mg/wk"}
                   </h5>
 
                   {medicationAnswer === "yes" && (

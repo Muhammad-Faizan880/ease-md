@@ -23,6 +23,11 @@ function StepperForm() {
     medicationAnswer: null,
     selectedDose: null,
     selectedProduct: 1,
+    selectedLinks: [
+      "https://checkout.ease-md.com/i/51",
+      "https://checkout.ease-md.com/i/46",
+      "https://checkout.ease-md.com/i/29",
+    ],
   });
 
   // Watch for changes in weight
@@ -79,13 +84,14 @@ function StepperForm() {
 
   const toggleDropdown = () => setIsOpen(!isOpen);
 
-  const handleSelect = (label) => {
-    setSelectedOption(label);
+  const handleSelect = (option) => {
+    setSelectedOption(option.label);
     setIsOpen(false);
 
     setFormData((prev) => ({
       ...prev,
-      selectedDose: label,
+      selectedDose: option.label,
+      selectedLinks: option.links,
     }));
   };
 
@@ -222,109 +228,6 @@ function StepperForm() {
 
   //product start//
 
-  const doseOptions = [
-    {
-      label: "0.25 mg/wk",
-      links: [
-        "https://checkout.ease-md.com/i/29",
-        "https://checkout.ease-md.com/i/46",
-        "https://checkout.ease-md.com/i/51",
-      ],
-    },
-    {
-      label: "0.5 mg/wk",
-      links: [
-        "https://checkout.ease-md.com/i/30",
-        "https://checkout.ease-md.com/i/47",
-        "https://checkout.ease-md.com/i/52",
-      ],
-    },
-    {
-      label: "1 mg/wk",
-      links: [
-        "https://checkout.ease-md.com/i/31",
-        "https://checkout.ease-md.com/i/42",
-        "https://checkout.ease-md.com/i/53",
-      ],
-    },
-    {
-      label: "1.5 mg/wk",
-      links: [
-        "https://checkout.ease-md.com/i/32",
-        "https://checkout.ease-md.com/i/43",
-        "https://checkout.ease-md.com/i/54",
-      ],
-    },
-    {
-      label: "2 mg/wk",
-      links: [
-        "https://checkout.ease-md.com/i/33",
-        "https://checkout.ease-md.com/i/44",
-        "https://checkout.ease-md.com/i/55",
-      ],
-    },
-    {
-      label: "2.5 mg/wk",
-      links: [
-        "https://checkout.ease-md.com/i/34",
-        "https://checkout.ease-md.com/i/45",
-        "https://checkout.ease-md.com/i/5",
-      ],
-    },
-  ];
-
-  const products = [
-    {
-      id: 1,
-      title: "6 Month Plan",
-      price: "$209",
-      bottle: "/bottle",
-      save: "Save $1,619 Instantly",
-      para: "6 Bottles. 3 bottles shipped every 3 mos.",
-      para1: "Access to Dr. Sam’s VIP Community",
-      para2: "Includes: Personalized Diet Plans, Workshops, Community Support",
-      para3: "56% TOTAL SAVINGS",
-      image: "/assets/images/6.png",
-      buttonLabel: "SELECT PLAN",
-      cancel: "Cancel or Change plan anytime",
-      badge: "BEST VALUE",
-      redirectUrl: "https://checkout.ease-md.com/i/51",
-      doseOptions: doseOptions,
-    },
-    {
-      id: 2,
-      title: "3 Month Plan",
-      price: "$251",
-      bottle: "/bottle",
-      save: "Save $684 Instantly",
-      para: "3 bottles shipped every 3 months",
-      para1: "Access to Dr. Sam’s VIP Community",
-      para2: "Includes: Personalized Diet Plans, Workshops, Community Support",
-      para3: "48% TOTAL SAVINGS",
-      image: "/assets/images/3.png",
-      buttonLabel: "SELECTED",
-      cancel: "Cancel or Change plan anytime",
-      redirectUrl: "https://checkout.ease-md.com/i/46",
-      doseOptions: doseOptions,
-    },
-    {
-      id: 3,
-      title: "1 Month Plan",
-      price: "$279",
-      bottle: "/bottle",
-      save: "Save $200 Instantly",
-      para: "1 Bottle. Shipped every month",
-      para1: "Great for trying it out risk-free",
-      para2: "",
-      para3: "42% TOTAL Savings",
-      image: "/assets/images/67.png",
-      buttonLabel: "SELECT PLAN",
-      cancel: "Cancel or Change plan anytime",
-      redirectUrl: "https://checkout.ease-md.com/i/29",
-      doseOptions: doseOptions,
-    },
-  ];
-
   const productsMob = [
     {
       id: 1,
@@ -383,18 +286,111 @@ function StepperForm() {
     "PACKAGE SELECTION",
   ];
 
+  const doseOptions = [
+    {
+      label: "0.25 mg/wk",
+      links: [
+        "https://checkout.ease-md.com/i/29",
+        "https://checkout.ease-md.com/i/46",
+        "https://checkout.ease-md.com/i/51",
+      ],
+    },
+    {
+      label: "0.5 mg/wk",
+      links: [
+        "https://checkout.ease-md.com/i/30",
+        "https://checkout.ease-md.com/i/47",
+        "https://checkout.ease-md.com/i/52",
+      ],
+    },
+    {
+      label: "1 mg/wk",
+      links: [
+        "https://checkout.ease-md.com/i/31",
+        "https://checkout.ease-md.com/i/42",
+        "https://checkout.ease-md.com/i/53",
+      ],
+    },
+    {
+      label: "1.5 mg/wk",
+      links: [
+        "https://checkout.ease-md.com/i/32",
+        "https://checkout.ease-md.com/i/43",
+        "https://checkout.ease-md.com/i/54",
+      ],
+    },
+    {
+      label: "2 mg/wk",
+      links: [
+        "https://checkout.ease-md.com/i/33",
+        "https://checkout.ease-md.com/i/44",
+        "https://checkout.ease-md.com/i/55",
+      ],
+    },
+    {
+      label: "2.5 mg/wk",
+      links: [
+        "https://checkout.ease-md.com/i/34",
+        "https://checkout.ease-md.com/i/45",
+        "https://checkout.ease-md.com/i/56",
+      ],
+    },
+  ];
+
+  const products = [
+    {
+      id: 1,
+      title: "6 Month Plan",
+      price: "$209",
+      bottle: "/bottle",
+      save: "Save $1,619 Instantly",
+      para: "6 Bottles. 3 bottles shipped every 3 mos.",
+      para1: "Access to Dr. Sam’s VIP Community",
+      para2: "Includes: Personalized Diet Plans, Workshops, Community Support",
+      para3: "56% TOTAL SAVINGS",
+      image: "/assets/images/6.png",
+      buttonLabel: "SELECT PLAN",
+      cancel: "Cancel or Change plan anytime",
+      badge: "BEST VALUE",
+      redirectUrl: "https://checkout.ease-md.com/i/51",
+      doseOptions: doseOptions,
+    },
+    {
+      id: 2,
+      title: "3 Month Plan",
+      price: "$251",
+      bottle: "/bottle",
+      save: "Save $684 Instantly",
+      para: "3 bottles shipped every 3 months",
+      para1: "Access to Dr. Sam’s VIP Community",
+      para2: "Includes: Personalized Diet Plans, Workshops, Community Support",
+      para3: "48% TOTAL SAVINGS",
+      image: "/assets/images/3.png",
+      buttonLabel: "SELECTED",
+      cancel: "Cancel or Change plan anytime",
+      redirectUrl: "https://checkout.ease-md.com/i/46",
+      doseOptions: doseOptions,
+    },
+    {
+      id: 3,
+      title: "1 Month Plan",
+      price: "$279",
+      bottle: "/bottle",
+      save: "Save $200 Instantly",
+      para: "1 Bottle. Shipped every month",
+      para1: "Great for trying it out risk-free",
+      para2: "",
+      para3: "42% TOTAL Savings",
+      image: "/assets/images/67.png",
+      buttonLabel: "SELECT PLAN",
+      cancel: "Cancel or Change plan anytime",
+      redirectUrl: "https://checkout.ease-md.com/i/29",
+      doseOptions: doseOptions,
+    },
+  ];
+
   const handleProductSelect = (productId) => {
     console.log("Selected Product ID:", productId);
-
-    const selectedProduct = products.find(
-      (product) => product.id === productId
-    );
-
-    if (selectedProduct && selectedProduct.doseOptions) {
-      console.log("Dose Options:", selectedProduct.doseOptions);
-    } else {
-      console.log("No dose options available for this product.");
-    }
 
     setFormData((prev) => ({
       ...prev,
@@ -1187,8 +1183,8 @@ function StepperForm() {
                               <div
                                 key={index}
                                 onClick={() => {
-                                  handleSelect(option.label);
-                                  console.log("Selected Links:", option.links);
+                                  handleSelect(option);
+                                  //console.log("Selected Links:", option.links);
                                 }}
                                 className="option-clr"
                                 style={{
@@ -1704,11 +1700,15 @@ function StepperForm() {
                           type="button"
                           className="btn btn-setting-class-custom rounded-pill py-3"
                           onClick={() => {
-                            const selected = products.find(
-                              (p) => p.id === formData.selectedProduct
-                            );
-                            if (selected?.redirectUrl) {
-                              window.location.href = selected.redirectUrl;
+                            console.log(formData.selectedProduct);
+                            if (formData.selectedProduct === 1) {
+                              window.location.href = formData.selectedLinks[2];
+                            }
+                            if (formData.selectedProduct === 2) {
+                              window.location.href = formData.selectedLinks[1];
+                            }
+                            if (formData.selectedProduct === 3) {
+                              window.location.href = formData.selectedLinks[0];
                             }
                           }}
                         >

@@ -51,7 +51,7 @@ function StepperForm() {
         .toString()
         .padStart(2, "0")}/${futureDate.getFullYear()}`;
 
-      setFormData((prev) => ({
+        setFormData((prev) => ({
         ...prev,
         weightGoalGraph: calculatedGoal,
         secondMonthGoal: secondMonth,
@@ -1118,7 +1118,7 @@ function StepperForm() {
                   </div>
 
                   <h5 className="class-compound">
-                    Compounded {selectedOption || "Semaglutide 0.5 mg/wk"}
+                    Compounded {selectedOption || "Semaglutide 0.25 mg/wk"}
                   </h5>
 
                   {medicationAnswer === "yes" && (

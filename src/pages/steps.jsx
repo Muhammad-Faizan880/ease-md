@@ -24,9 +24,10 @@ function StepperForm() {
     selectedDose: null,
     selectedProduct: 1,
     selectedLinks: [
-      "https://checkout.ease-md.com/i/51",
-      "https://checkout.ease-md.com/i/46",
       "https://checkout.ease-md.com/i/29",
+      "https://checkout.ease-md.com/i/46",
+      "https://checkout.ease-md.com/i/51",
+
     ],
   });
 

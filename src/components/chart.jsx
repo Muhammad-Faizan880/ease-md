@@ -100,18 +100,18 @@ const WeightTrackerChart = ({formData }) => {
                 <circle 
                   cx={getXPosition(index)} 
                   cy={getYPosition(point.weight)} 
-                  r={index === weightData.length - 1 ? 20 : 8}
+                  r={index === weightData.length - 1 ? 30 : 8}
                   fill={index === weightData.length - 1 ? "#2FBAAC" : "white"} 
                   stroke="#2FBAAC"
                   strokeWidth="8"
                 />
                 <text 
                   x={getXPosition(index)} 
-                  y={getYPosition(point.weight) + (index === weightData.length - 1 ? 6 : -15)} 
+                  y={getYPosition(point.weight) + (index === weightData.length - 1 ? 6 : -65)} 
                   textAnchor="middle" 
                   fill={index === weightData.length - 1 ? "white" : "#2FBAAC"}
-                  fontWeight="medium"
-                  fontSize={index === weightData.length - 1 ? "16px" : "22px"}
+                  fontWeight="bold"
+                  fontSize={index === weightData.length - 1 ? "28px" : "28px"}
                 >
                   {point.weight}
                 </text>
@@ -119,9 +119,10 @@ const WeightTrackerChart = ({formData }) => {
                 {/* Month labels */}
                 <text 
                   x={getXPosition(index)} 
-                  y={padding.top + graphHeight + 25} 
+                  y={padding.top + graphHeight + 35} 
                   textAnchor="middle" 
                   fill="#2F827A"
+                  fontSize={18}
                 >
                   {point.month}
                 </text>

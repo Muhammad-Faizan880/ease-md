@@ -4,7 +4,20 @@ import WeightTrackerChart from "../components/chart";
 import SimpleSlider from "../components/slider";
 
 function StepperForm() {
-  const [currentStep, setCurrentStep] = useState(1);
+
+// Total number of steps
+  const totalSteps = 8;
+
+ const getInitialStep = () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const stepFromUrl = parseInt(urlParams.get("step"), 8);
+    if (stepFromUrl && stepFromUrl >= 1 && stepFromUrl <= totalSteps) {
+      return stepFromUrl;
+    }
+    return 1;
+  };
+
+  const [currentStep, setCurrentStep] = useState(getInitialStep);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -176,7 +189,7 @@ function StepperForm() {
   };
 
   // Total number of steps
-  const totalSteps = 8;
+  // const totalSteps = 8;
 
   // Handle tab input changes
   const handleTabChange = (tab) => {
@@ -213,19 +226,54 @@ function StepperForm() {
     }
   };
 
+  // // Navigate to next step
+  // const nextStep = () => {
+  //   if (currentStep < totalSteps) {
+  //     setCurrentStep(currentStep + 1);
+  //   }
+  // };
+
+  // // Navigate to previous step
+  // const prevStep = () => {
+  //   if (currentStep > 1) {
+  //     setCurrentStep(currentStep - 1);
+  //   }
+  // };
+
+
+
+  useEffect(() => {
+    const url = new URL(window.location);
+    url.searchParams.set("step", currentStep);
+    window.history.replaceState({}, "", url);
+  }, [currentStep]);
+
   // Navigate to next step
   const nextStep = () => {
     if (currentStep < totalSteps) {
-      setCurrentStep(currentStep + 1);
+      const next = currentStep + 1;
+      setCurrentStep(next);
+
+      // Update the URL without page reload
+      const url = new URL(window.location);
+      url.searchParams.set("step", next);
+      window.history.pushState({}, "", url);
     }
   };
 
   // Navigate to previous step
   const prevStep = () => {
     if (currentStep > 1) {
-      setCurrentStep(currentStep - 1);
+      const prev = currentStep - 1;
+      setCurrentStep(prev);
+
+      // Update the URL without page reload
+      const url = new URL(window.location);
+      url.searchParams.set("step", prev);
+      window.history.pushState({}, "", url);
     }
   };
+
 
   //product start//
 

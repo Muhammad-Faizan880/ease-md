@@ -248,32 +248,28 @@ function StepperForm() {
     window.history.replaceState({}, "", url);
   }, [currentStep]);
 
-  // Navigate to next step
-  const nextStep = () => {
-    if (currentStep < totalSteps) {
-      const next = currentStep + 1;
-      setCurrentStep(next);
+// Navigate to next step
+const nextStep = () => {
+  if (currentStep < totalSteps) {
+    const next = currentStep + 1;
+    setCurrentStep(next);
 
-      // Update the URL without page reload
-      const url = new URL(window.location);
-      url.searchParams.set("step", next);
-      window.history.pushState({}, "", url);
-    }
-  };
+    // ✅ Send step update to parent window
+    window.parent.postMessage({ step: next }, "*");
+    console.log('from child step: ' + next);
+  }
+};
 
-  // Navigate to previous step
-  const prevStep = () => {
-    if (currentStep > 1) {
-      const prev = currentStep - 1;
-      setCurrentStep(prev);
+// Navigate to previous step
+const prevStep = () => {
+  if (currentStep > 1) {
+    const prev = currentStep - 1;
+    setCurrentStep(prev);
 
-      // Update the URL without page reload
-      const url = new URL(window.location);
-      url.searchParams.set("step", prev);
-      window.history.pushState({}, "", url);
-    }
-  };
-
+    // ✅ Send step update to parent window
+    window.parent.postMessage({ step: prev }, "*");
+  }
+};
 
   //product start//
 

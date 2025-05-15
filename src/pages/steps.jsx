@@ -6,16 +6,18 @@ import SimpleSlider from "../components/slider";
 function StepperForm() {
 
 // Total number of steps
-  const totalSteps = 8;
+ const totalSteps = 8;
 
- const getInitialStep = () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const stepFromUrl = parseInt(urlParams.get("step"), 8);
-    if (stepFromUrl && stepFromUrl >= 1 && stepFromUrl <= totalSteps) {
-      return stepFromUrl;
-    }
-    return 1;
-  };
+const getInitialStep = () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const stepFromUrl = parseInt(urlParams.get("step"), 8); 
+
+  if (stepFromUrl >= 1 && stepFromUrl <= totalSteps) {
+    return stepFromUrl;
+  }
+
+  return 1; // fallback if step is invalid or missing
+};
 
   const [currentStep, setCurrentStep] = useState(getInitialStep);
   const [formData, setFormData] = useState({

@@ -11,8 +11,8 @@ const totalSteps = 8;
 
 const getInitialStep = () => {
   const urlParams = new URLSearchParams(window.location.search);
-  // Fixed: parseInt with correct base 10
-  const stepFromUrl = parseInt(urlParams.get("step"), 10); 
+  // FIX 1: Changed parseInt base from 8 to 10
+  const stepFromUrl = parseInt(urlParams.get("step"), 10);
 
   if (stepFromUrl >= 1 && stepFromUrl <= totalSteps) {
     return stepFromUrl;
@@ -244,42 +244,50 @@ const getInitialStep = () => {
   //   }
   // };
 
-
-const [quizCompleted, setQuizCompleted] = useState(false);
-
 useEffect(() => {
-  // Only update URL if not the final step or if quiz is not completed
-  if (currentStep < totalSteps || (currentStep === totalSteps && !quizCompleted)) {
+  // FIX 2: Only update URL if not the final step
+  if (currentStep < totalSteps) {
     const url = new URL(window.location);
     url.searchParams.set("step", currentStep);
+    
+    // Use pushState instead of replaceState for immediate change
     window.history.pushState({}, "", url);
+    
+    // Update parent window with current step
+    window.parent.postMessage({ step: currentStep }, "*");
+    console.log('from child step: ' + currentStep);
   }
-}, [currentStep, quizCompleted]);
+}, [currentStep]);
 
 // Navigate to next step
 const nextStep = () => {
   if (currentStep < totalSteps) {
-    // Normal next step (steps 1-7)
     const next = currentStep + 1;
     setCurrentStep(next);
-
-    // Send step update to parent window
-    window.parent.postMessage({ step: next }, "*");
-    console.log('from child step: ' + next);
+    
+    // FIX 3: Special handling for final step
+    if (next === totalSteps) {
+      // For the final step 8, send completion message but don't update URL
+      window.parent.postMessage({ 
+        step: next,
+        isLastStep: true 
+      }, "*");
+      console.log('final step reached');
+    } else {
+      // For steps 1-7, send regular step update
+      window.parent.postMessage({ step: next }, "*");
+      console.log('from child step: ' + next);
+    }
   } else if (currentStep === totalSteps) {
-    // For final step (step 8), mark quiz as completed
-    setQuizCompleted(true);
-    
-    // Remove step parameter from URL when continue is clicked on final step
-    const url = new URL(window.location);
-    url.searchParams.delete("step");
-    window.history.pushState({}, "", url);
-    
-    // Send completion message to parent
+    // FIX 4: Handle continue button click on final step
+    // Send completion message but don't update URL with step=8
     window.parent.postMessage({ completed: true }, "*");
     console.log('quiz completed');
     
-    // Here you can add code to redirect or show completion screen
+    // Remove step from URL when continue clicked on final step
+    const url = new URL(window.location);
+    url.searchParams.delete("step");
+    window.history.pushState({}, "", url);
   }
 };
 
@@ -289,12 +297,7 @@ const prevStep = () => {
     const prev = currentStep - 1;
     setCurrentStep(prev);
 
-    // Reset completed state if going back from final step
-    if (currentStep === totalSteps) {
-      setQuizCompleted(false);
-    }
-
-    // Send step update to parent window
+    // Always send step update to parent window
     window.parent.postMessage({ step: prev }, "*");
   }
 };

@@ -6,11 +6,11 @@ import SimpleSlider from "../components/slider";
 function StepperForm() {
 
 // Total number of steps
-const totalSteps = 9;
+const totalSteps = 8;
 
 const getInitialStep = () => {
   const urlParams = new URLSearchParams(window.location.search);
-  const stepFromUrl = parseInt(urlParams.get("step"), 9); 
+  const stepFromUrl = parseInt(urlParams.get("step"), 10); // Changed base from 8 to 10
 
   if (stepFromUrl >= 1 && stepFromUrl <= totalSteps) {
     return stepFromUrl;
@@ -245,17 +245,13 @@ const getInitialStep = () => {
 
 
 useEffect(() => {
-  const url = new URL(window.location.href);
-
+  // Only update URL if step is within valid range (1 to 7)
+  // Don't update URL for step 8 (final step)
   if (currentStep >= 1 && currentStep < totalSteps) {
-    // ✅ Show step in URL for steps 1–7
-    url.searchParams.set("step", currentStep.toString());
-  } else if (currentStep === totalSteps) {
-    // ❌ Remove step from URL on step 8
-    url.searchParams.delete("step");
+    const url = new URL(window.location);
+    url.searchParams.set("step", currentStep);
+    window.history.replaceState({}, "", url);
   }
-
-  window.history.replaceState(null, "", url.toString());
 }, [currentStep]);
 
 // Navigate to next step
@@ -264,9 +260,16 @@ const nextStep = () => {
     const next = currentStep + 1;
     setCurrentStep(next);
 
-    // ✅ Send step update to parent window
-    window.parent.postMessage({ step: next }, "*");
-    console.log('from child step: ' + next);
+    // Only send postMessage if not the final step
+    if (next < totalSteps) {
+      // Send step update to parent window
+      window.parent.postMessage({ step: next }, "*");
+      console.log('from child step: ' + next);
+    } else {
+      // For final step, send a different message type
+      window.parent.postMessage({ completed: true }, "*");
+      console.log('quiz completed');
+    }
   }
 };
 
@@ -276,7 +279,7 @@ const prevStep = () => {
     const prev = currentStep - 1;
     setCurrentStep(prev);
 
-    // ✅ Send step update to parent window
+    // Send step update to parent window
     window.parent.postMessage({ step: prev }, "*");
   }
 };

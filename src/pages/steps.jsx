@@ -6,11 +6,11 @@ import SimpleSlider from "../components/slider";
 function StepperForm() {
 
 // Total number of steps
-const totalSteps = 8;
+const totalSteps = 9;
 
 const getInitialStep = () => {
   const urlParams = new URLSearchParams(window.location.search);
-  const stepFromUrl = parseInt(urlParams.get("step"), 10); 
+  const stepFromUrl = parseInt(urlParams.get("step"), 9); 
 
   if (stepFromUrl >= 1 && stepFromUrl <= totalSteps) {
     return stepFromUrl;
@@ -245,9 +245,17 @@ const getInitialStep = () => {
 
 
 useEffect(() => {
-  const url = new URL(window.location);
-  url.searchParams.set("step", currentStep);
-  window.history.replaceState({}, "", url);
+  const url = new URL(window.location.href);
+
+  if (currentStep >= 1 && currentStep < totalSteps) {
+    // ✅ Show step in URL for steps 1–7
+    url.searchParams.set("step", currentStep.toString());
+  } else if (currentStep === totalSteps) {
+    // ❌ Remove step from URL on step 8
+    url.searchParams.delete("step");
+  }
+
+  window.history.replaceState(null, "", url.toString());
 }, [currentStep]);
 
 // Navigate to next step

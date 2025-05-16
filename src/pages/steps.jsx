@@ -6,7 +6,7 @@ import SimpleSlider from "../components/slider";
 function StepperForm() {
 
 // Total number of steps
- const totalSteps = 8;
+const totalSteps = 8;
 
 const getInitialStep = () => {
   const urlParams = new URLSearchParams(window.location.search);
@@ -16,7 +16,7 @@ const getInitialStep = () => {
     return stepFromUrl;
   }
 
-  return 1; // fallback if step is invalid or missing
+  return 1;
 };
 
   const [currentStep, setCurrentStep] = useState(getInitialStep);
@@ -244,11 +244,11 @@ const getInitialStep = () => {
 
 
 
-  useEffect(() => {
-    const url = new URL(window.location);
-    url.searchParams.set("step", currentStep);
-    window.history.replaceState({}, "", url);
-  }, [currentStep]);
+useEffect(() => {
+  const url = new URL(window.location);
+  url.searchParams.set("step", currentStep);
+  window.history.replaceState({}, "", url);
+}, [currentStep]);
 
 // Navigate to next step
 const nextStep = () => {
@@ -272,7 +272,6 @@ const prevStep = () => {
     window.parent.postMessage({ step: prev }, "*");
   }
 };
-
   //product start//
 
   const productsMob = [

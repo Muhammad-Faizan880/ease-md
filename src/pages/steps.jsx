@@ -10,7 +10,7 @@ const totalSteps = 8;
 
 const getInitialStep = () => {
   const urlParams = new URLSearchParams(window.location.search);
-  const stepFromUrl = parseInt(urlParams.get("step"), 8); 
+  const stepFromUrl = parseInt(urlParams.get("step"), 10); 
 
   if (stepFromUrl >= 1 && stepFromUrl <= totalSteps) {
     return stepFromUrl;
